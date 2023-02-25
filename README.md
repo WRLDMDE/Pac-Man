@@ -60,11 +60,11 @@ Control pacman's direction
 * Move ghosts
 + If Pac-man is caught by a ghost, he loses a life (decrement lives)
 - If Pac-man eats a pellet, increase score by 10 points (increment score count)
-- If Pac-man eats a green power pellet, adds a life to the bar (increment lives)
-- If Pac-man eats a blue power pellet, apply a speed boost to the Pac-Man/ give Pac Man an attacking ability.
+* If Pac-man eats a green power pellet, adds a life to the bar (increment lives)
++ If Pac-man eats a blue power pellet, apply a speed boost to the Pac-Man/ give Pac Man an attacking ability.
 - If Pac-man eats a rainbow power pellet, grant invincibility for 10 seconds
-- If Pac-man eats a red power-pellet, change color of ghosts, allow Pac Man to eat them and sends the ghost back to the starting position, slows down ghost after coming out of the starting position
-- If Pac Man eats all pellets, move on to the next stage(resets, with a slightly harder difficulty each time)
+* If Pac-man eats a red power-pellet, change color of ghosts, allow Pac Man to eat them and sends the ghost back to the starting position, slows down ghost after coming out of the starting position
++ If Pac Man eats all pellets, move on to the next stage(resets, with a slightly harder difficulty each time)
 - Once on the final stage Pac Man is able to eat all pellets, declaring the player as the winner.
 
 ### Advanced Features:
