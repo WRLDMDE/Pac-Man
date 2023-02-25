@@ -1,29 +1,33 @@
 # Pac-Man
 ## Team Name: WRLDMDE
--Trevon (Project Manager)
-*Julian
-+Daniel
+- Trevon (Project Manager)
+* Julian
++ Daniel
 ### User Story / Gameplay
-Describe the gameplay
-	The player controls Pac-Man and must eat all dots inside of an enclosed maze, while avoiding all the ghosts in the maze. 
-What are the conditions when the game begins?
-All ghosts are contained in one area
-Pac Man starts at a random location on maze
-Dots scattered all over traversable maze
-Score display starts at 0 
-Power ups(power pellets) located at 4 corners on the map
-Does the game have an end? If so, what are the conditions for when it ends?
+**Describe the gameplay:**
+The player controls Pac-Man and must eat all dots inside of an enclosed maze, while avoiding all the ghosts in the maze. 
+**What are the conditions when the game begins?**
+All ghosts are contained in one area, with Pac Man starting at a random location on the maze.
+
+Dots are scattered all over traversable maze and the Score display starts at 0.
+
+Power ups(power pellets) are located at 4 corners on the map
+
+**Does the game have an end? If so, what are the conditions for when it ends?**
+
 Pac Man must consume all dots for each level (evaluate score of all dots set it equal to such) 
+
 ### Visual Game Components:
-A description of the visual game components
-What are the visual game components? Which are static and which are animated?
-Pac-Man (dynamic)
-Ghosts (dynamic)
-Maze (static)
-Pellets (dynamic)
-Power pellets (dynamic)
-Score display (dynamic)
-Level display & difficulty(static)
+**What are the visual game components? Which are static and which are animated?**
+
+- Pac-Man (dynamic)
+* Ghosts (dynamic)
++ Maze (static)
+- Pellets (dynamic)
+* Power pellets (dynamic)
++ Score display (dynamic)
+- Level display & difficulty(static)
+- 
 ### Data:
 The major data values used in the game
 What data will you need to track for each game component?
