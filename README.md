@@ -1,8 +1,8 @@
 # Pac-Man
 ## Team Name: WRLDMDE
-*Trevon (Project Manager)
+-Trevon (Project Manager)
 *Julian
-*Daniel
++Daniel
 ### User Story / Gameplay
 Describe the gameplay
 	The player controls Pac-Man and must eat all dots inside of an enclosed maze, while avoiding all the ghosts in the maze. 
