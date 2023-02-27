@@ -145,7 +145,7 @@ class Pacman {
             this.currentFrame == this.frameCount ? 1 : this.currentFrame + 1;
     }
 
-    draw() {
+    draw(f) {
         canvasContext.save();
         canvasContext.translate(
             this.x + oneBlockSize / 2,
@@ -157,7 +157,7 @@ class Pacman {
             -this.y - oneBlockSize / 2
         );
         canvasContext.drawImage(
-            pacmanFrames,
+            f,
             (this.currentFrame - 1) * oneBlockSize,
             0,
             oneBlockSize,

@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const canvasContext = canvas.getContext("2d");
-const pacmanFrames = document.getElementById("animation");
-// const pacmanFrames2 = document.getElementById("animation2");
+const pacmanFrames = document.getElementById("animation1");
+const pacmanFrames2 = document.getElementById("animation2");
 const ghostFrames = document.getElementById("ghosts");
 
 let createRect = (x, y, width, height, color) => {
@@ -13,7 +13,8 @@ const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
-let lives = 6;
+let lives = 30;
+let foodCount = 4210;
 let ghostCount = 4;
 let ghostImageLocations = [
   { x: 0, y: 0 },
@@ -85,23 +86,19 @@ let randomTargetsForGhosts = [
   },
 ];
 
-// for (let i = 0; i < map.length; i++) {
-//     for (let j = 0; j < map[0].length; j++) {
-//         map[i][j] = 2;
-//     }
-// }
+
 
 let createNewPacman = () => {
   pacman1 = new Pacman(
-    oneBlockSize + 120,
-    oneBlockSize + 40,
+    oneBlockSize * 7,
+    oneBlockSize * 3,
     oneBlockSize,
     oneBlockSize,
     oneBlockSize / 5 
   );
   pacman2 = new Pacman(
-    oneBlockSize + 160,
-    oneBlockSize + 40,
+    oneBlockSize * 27,
+    oneBlockSize * 3,
     oneBlockSize,
     oneBlockSize,
     oneBlockSize / 5 
@@ -109,8 +106,9 @@ let createNewPacman = () => {
 };
 
 let gameLoop = () => {
-  update();
   draw();
+  update();
+
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
@@ -120,11 +118,20 @@ let restartPacmanAndGhosts = () => {
   createGhosts();
 };
 
-let onGhostCollision = () => {
+let onGhostCollisionPac = () => { //ghost only follows pacman
   lives--;
   restartPacmanAndGhosts();
   if (lives == 0) {
+    gameOver();
   }
+};
+
+let onGhostCollisionMs = () => {//but if ms pacman dies once its game over
+  lives = 0;
+  restartPacmanAndGhosts();
+  gameOver();
+  // if (lives == 0) {
+  // }
 };
 
 let update = () => {
@@ -132,29 +139,81 @@ let update = () => {
   pacman1.eat();
   updateGhosts();
   if (pacman1.checkGhostCollision(ghosts)) {
-    onGhostCollision();
+    onGhostCollisionPac();
+    restartGame();
   }
   pacman2.moveProcess();
   pacman2.eat();
   updateGhosts();
   if (pacman2.checkGhostCollision(ghosts)) {
-    onGhostCollision();
+    onGhostCollisionMs();
+    restartGame();
+  }
+  if(score >= foodCount){
+    drawWin();
+    //clear Interval is what stops everyhing from running
+    clearInterval(gameInterval);
+    //should move onto next level instead
+}
+};
+
+//resetting the game - %
+let restartGame = () => {
+  createNewPacman();
+  createGhosts();
+  // lives -=1 ;
+  //creates a condition stating if lives get to 0, invoke gameOver() method
+  if(lives === 0){
+      gameOver();
   }
 };
 
+// %
+let gameOver = () => {
+  lives--;
+  drawRemainingLives();
+  drawGameOver();
+  //clear interval stops everything from running 
+  clearInterval(gameInterval);
+}
+
+//create display for losing game -%
+let drawGameOver = () => {
+  //canvas content is used for drawing onto a canvas
+  canvasContext.font = "20px Emulogic";
+  canvasContext.fillStyle = "white";
+  canvasContext.fillText("Game Over", 150, 200);
+  //create a replay button along with an event handler that will restart game 
+}
+
+//create display for win -%
+let drawWin = () => {
+  canvasContext.font = "20px Emulogic";
+  canvasContext.fillStyle = "white";
+  canvasContext.fillText("You Win!", 150, 200);
+}
+//create a gameWin function that checks to see if all pellets are eaten 
+
+
 let drawFoods = () => {
+  //what does i keep track of and what does j keep track of within the map matrix
   for (let i = 0; i < map.length; i++) {
-    for (let j = 0; j < map[0].length; j++) {
-      if (map[i][j] == 2) {
-        createRect(
-          j * oneBlockSize + oneBlockSize / 3,
-          i * oneBlockSize + oneBlockSize / 3,
-          oneBlockSize / 3,
-          oneBlockSize / 3,
-          "pink"
-        );
+      for (let j = 0; j < map[0].length; j++) {
+          //2 within the tilemap is labeled as the open space
+          if (map[i][j] == 2) {
+              //renders a rectangle from the canvas 2D API
+              createRect(
+                  j * oneBlockSize + oneBlockSize / 3, //x position
+                  i * oneBlockSize + oneBlockSize / 3, //y position
+                  oneBlockSize / 3,//width
+                  oneBlockSize / 3,//height
+                   "#FEB897" //color
+                  //"#01FFF4" 
+              );
+          //need to target all positions except for where the ghosts are
+          //indices include the 200th index, 220-222th index, 241th index-242th index) might be one less 
+          }
       }
-    }
   }
 };
 
@@ -164,24 +223,29 @@ let drawRemainingLives = () => {
   canvasContext.fillText("Lives: ", 220, oneBlockSize * (map.length + 1));
 
   for (let i = 0; i < lives; i++) {
+    //method used to create images
     canvasContext.drawImage(
-      pacmanFrames,
-      2 * oneBlockSize,
-      0,
-      oneBlockSize,
-      oneBlockSize,
-      350 + i * oneBlockSize,
-      oneBlockSize * map.length + 2,
-      oneBlockSize,
-      oneBlockSize
+        pacmanFrames,//img
+        2 *oneBlockSize,//sx
+        0,//sy
+        oneBlockSize, //sWidth
+        oneBlockSize, //sHeight
+        300 + i * oneBlockSize, //dx
+        oneBlockSize * map.length + 15,//dy
+        oneBlockSize,//dWidth 
+        oneBlockSize//dHeight
     );
-  }
+}
 };
 
 let drawScore = () => {
   canvasContext.font = "20px Emulogic";
   canvasContext.fillStyle = "white";
-  canvasContext.fillText("Score: " + score, 0, oneBlockSize * (map.length + 1));
+  canvasContext.fillText(
+      "Score: " + score * 10,//the text
+      oneBlockSize,//x 
+     (oneBlockSize+ .5) * (map.length + 1)//y, added .5 to align with Lives display
+  );
 };
 
 let draw = () => {
@@ -190,8 +254,8 @@ let draw = () => {
   drawWalls();
   drawFoods();
   drawGhosts();
-  pacman1.draw();
-  pacman2.draw();
+  pacman1.draw(pacmanFrames);
+  pacman2.draw(pacmanFrames2);
   drawScore();
   drawRemainingLives();
 };
@@ -264,7 +328,7 @@ let createGhosts = () => {
       ghostImageLocations[i % 4].y,
       124,
       116,
-      6 + i
+      10 + i
     );
     ghosts.push(newGhost);
   }

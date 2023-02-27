@@ -8,11 +8,13 @@ let createRect = (x, y, width, height, color) => {
     canvasContext.fillRect(x, y, width, height);
 };
 
+
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
-let lives = 3;
+let lives = 10;
+let foodCount = 100; // % need to abstract this , 212 to win the game
 let ghostCount = 4;
 let ghostImageLocations = [
     { x: 0, y: 0 },
@@ -20,6 +22,7 @@ let ghostImageLocations = [
     { x: 0, y: 121 },
     { x: 176, y: 121 },
 ];
+//let gameWin = false; 
 
 // Game variables
 let fps = 30;
@@ -35,6 +38,7 @@ let wallInnerColor = "black";
 // This is used to create the map of the walls.
  // We use 1 for a wall frame , 0 if we don't want a wall, and 2 for our pellets that PacMan will collect.
  // 21 COLUMNS // 23 ROWS //
+ //TO add power ups, add new number such as: 3, which will represent the power dot
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -46,9 +50,9 @@ let map = [
     [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1],
     [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1],
-    [2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2],
-    [1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 2, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 0, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1, 1],
     [0, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1],
@@ -61,6 +65,16 @@ let map = [
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
+//reinstated for loop that was commented out before -%
+// for (let i = 0; i < map.length; i++) {
+//     for (let j = 0; j < map[0].length; j++) {
+//         if( map[i][j] = 2) {
+//             foodCount++;
+//         };
+//      }
+//  }
+
+
 
 let randomTargetsForGhosts = [
     { x: 1 * oneBlockSize, y: 1 * oneBlockSize },
@@ -72,11 +86,7 @@ let randomTargetsForGhosts = [
     },
 ];
 
-// for (let i = 0; i < map.length; i++) {
-//     for (let j = 0; j < map[0].length; j++) {
-//         map[i][j] = 2;
-//     }
-// }
+
 
 let createNewPacman = () => {
     pacman = new Pacman(
@@ -89,9 +99,12 @@ let createNewPacman = () => {
 };
 
 let gameLoop = () => {
+    draw(); //-% changed position of draw function
     update();
-    draw();
+    //draw();
+    //checkGameWin(); //
 };
+
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
 
@@ -104,6 +117,7 @@ let onGhostCollision = () => {
     lives--;
     restartPacmanAndGhosts();
     if (lives == 0) {
+        gameOver() //added gameOver function here -%   
     }
 };
 
@@ -113,41 +127,96 @@ let update = () => {
     updateGhosts();
     if (pacman.checkGhostCollision(ghosts)) {
         onGhostCollision();
+        restartGame(); //-%
+    }
+
+    //%
+    if(score >= foodCount){
+        drawWin();
+        //clear Interval is what stops everyhing from running
+        clearInterval(gameInterval);
+        //should move onto next level instead
     }
 };
 
+//resetting the game - %
+let restartGame = () => {
+    createNewPacman();
+    createGhosts();
+    // lives -=1 ;
+    //creates a condition stating if lives get to 0, invoke gameOver() method
+    if(lives === 0){
+        gameOver();
+    }
+};
+
+// %
+let gameOver = () => {
+    lives--;
+    drawRemainingLives();
+    drawGameOver();
+    //clear interval stops everything from running 
+    clearInterval(gameInterval);
+}
+
+//create display for losing game -%
+let drawGameOver = () => {
+    //canvas content is used for drawing onto a canvas
+    canvasContext.font = "20px Emulogic";
+    canvasContext.fillStyle = "white";
+    canvasContext.fillText("Game Over", 150, 200);
+    //create a replay button along with an event handler that will restart game 
+}
+
+//create display for win -%
+let drawWin = () => {
+    canvasContext.font = "20px Emulogic";
+    canvasContext.fillStyle = "white";
+    canvasContext.fillText("You Win!", 150, 200);
+}
+
+//create a gameWin function that checks to see if all pellets are eaten 
+
 let drawFoods = () => {
+    //what does i keep track of and what does j keep track of within the map matrix
     for (let i = 0; i < map.length; i++) {
         for (let j = 0; j < map[0].length; j++) {
+            //2 within the tilemap is labeled as the open space
             if (map[i][j] == 2) {
+                //renders a rectangle from the canvas 2D API
                 createRect(
-                    j * oneBlockSize + oneBlockSize / 3,
-                    i * oneBlockSize + oneBlockSize / 3,
-                    oneBlockSize / 3,
-                    oneBlockSize / 3,
-                    "#FEB897"
+                    j * oneBlockSize + oneBlockSize / 3, //x position
+                    i * oneBlockSize + oneBlockSize / 3, //y position
+                    oneBlockSize / 3,//width
+                    oneBlockSize / 3,//height
+                     "#FEB897" //color
+                    //"#01FFF4" 
                 );
+            //need to target all positions except for where the ghosts are
+            //indices include the 200th index, 220-222th index, 241th index-242th index) might be one less 
             }
         }
     }
 };
 
+//display of lives
 let drawRemainingLives = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "white";
-    canvasContext.fillText("Lives: ", 220, oneBlockSize * (map.length + 1));
+    canvasContext.fillText("Lives: ", 220, oneBlockSize * (map.length + 1) + 10);
 
     for (let i = 0; i < lives; i++) {
+        //method used to create images
         canvasContext.drawImage(
-            pacmanFrames,
-            2 * oneBlockSize,
-            0,
-            oneBlockSize,
-            oneBlockSize,
-            350 + i * oneBlockSize,
-            oneBlockSize * map.length + 2,
-            oneBlockSize,
-            oneBlockSize
+            pacmanFrames,//img
+            2 *oneBlockSize,//sx
+            0,//sy
+            oneBlockSize, //sWidth
+            oneBlockSize, //sHeight
+            300 + i * oneBlockSize, //dx
+            oneBlockSize * map.length + 15,//dy
+            oneBlockSize,//dWidth 
+            oneBlockSize//dHeight
         );
     }
 };
@@ -156,12 +225,13 @@ let drawScore = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "white";
     canvasContext.fillText(
-        "Score: " + score,
-        0,
-        oneBlockSize * (map.length + 1)
+        "Score: " + score * 10,//the text
+        oneBlockSize,//x 
+       (oneBlockSize+ .5) * (map.length + 1)//y, added .5 to align with Lives display
     );
 };
 
+//putting all visual elements on the display 
 let draw = () => {
     canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     createRect(0, 0, canvas.width, canvas.height, "black");
@@ -178,11 +248,13 @@ let drawWalls = () => {
         for (let j = 0; j < map[0].length; j++) {
             if (map[i][j] == 1) {
                 createRect(
-                    j * oneBlockSize,
-                    i * oneBlockSize,
-                    oneBlockSize,
-                    oneBlockSize,
-                    "#342DCA"
+                    j * oneBlockSize,//x
+                    i * oneBlockSize,//y
+                    oneBlockSize,//width
+                    oneBlockSize,//height
+                    "#342DCA"//original color- blue
+                    //"#39FF14"//changing theme color for walls to neon green 
+
                 );
                 if (j > 0 && map[i][j - 1] == 1) {
                     createRect(
