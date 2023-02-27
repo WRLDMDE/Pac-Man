@@ -6,7 +6,7 @@ const ghostFrames = document.getElementById("ghosts");
 let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
     canvasContext.fillRect(x, y, width, height);
-};
+}; //testing
 
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
