@@ -140,7 +140,6 @@ let update = () => {
 let restartGame = () => {
     createNewPacman();
     createGhosts();
-    lives -=1 ;
     //creates a condition stating if lives get to 0, invoke gameOver() method
     if(lives === 0){
         gameOver();
