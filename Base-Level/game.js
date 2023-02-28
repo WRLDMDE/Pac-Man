@@ -13,6 +13,7 @@ const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
 let lives = 3;
+let foodCount = 210;
 let ghostCount = 4;
 let ghostImageLocations = [
     { x: 0, y: 0 },
@@ -89,8 +90,9 @@ let createNewPacman = () => {
 };
 
 let gameLoop = () => {
-    update();
     draw();
+    update();
+    //draw();
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
@@ -104,6 +106,7 @@ let onGhostCollision = () => {
     lives--;
     restartPacmanAndGhosts();
     if (lives == 0) {
+        gameOver();
     }
 };
 
@@ -113,19 +116,65 @@ let update = () => {
     updateGhosts();
     if (pacman.checkGhostCollision(ghosts)) {
         onGhostCollision();
+        restartGame();
     }
+
+    if(score >= foodCount){
+        drawWin();
+        //clear interval stops everything from ruuning
+        clearInterval(gameInterval)
+        //should move into the next level
+    }
+
 };
+
+//resetting the game 
+let restartGame = () => {
+    createNewPacman();
+    createGhosts();
+
+    if (lives === 0){
+        gameOver();
+    }
+}
+
+let gameOver = () => {
+    drawGameOver();
+    //clear interval stops everything from running
+    clearInterval(gameInterval);
+}
+
+let drawGameOver = () => {
+    //canvas content is used for drawing onto a canvas
+     canvasContext.font = "20px Emulogic";
+     canvasContext.fillStyle = "white";
+     canvasContext.fillText("Game Over", 150, 200);
+    //create a replay button along with an event handler that will restart game
+    
+}
+
+//create display for win -%
+let drawWin = () => {
+    canvasContext.font = "20px Emulogic";
+    canvasContext.fillStyle = "white";
+    canvasContext.fillText("You Win!", 150, 200);
+}
+
+
 
 let drawFoods = () => {
     for (let i = 0; i < map.length; i++) {
         for (let j = 0; j < map[0].length; j++) {
+            //2 within the tilemap is labeled as the open space
             if (map[i][j] == 2) {
+                //renders a rectangle from the canvas 2D API
                 createRect(
-                    j * oneBlockSize + oneBlockSize / 3,
-                    i * oneBlockSize + oneBlockSize / 3,
-                    oneBlockSize / 3,
-                    oneBlockSize / 3,
-                    "#FEB897"
+                    j * oneBlockSize + oneBlockSize / 3,//x position
+                    i * oneBlockSize + oneBlockSize / 3,//y position
+                    oneBlockSize / 3,//width
+                    oneBlockSize / 3,//height
+                    "#FEB897"//color
+                     //"#01FFF4"
                 );
             }
         }
@@ -138,16 +187,17 @@ let drawRemainingLives = () => {
     canvasContext.fillText("Lives: ", 220, oneBlockSize * (map.length + 1));
 
     for (let i = 0; i < lives; i++) {
+        //method used to create images
         canvasContext.drawImage(
-            pacmanFrames,
-            2 * oneBlockSize,
-            0,
-            oneBlockSize,
-            oneBlockSize,
-            350 + i * oneBlockSize,
-            oneBlockSize * map.length + 2,
-            oneBlockSize,
-            oneBlockSize
+            pacmanFrames,//img
+            2 * oneBlockSize,//sx
+            0,//sy
+            oneBlockSize,//sWidth
+            oneBlockSize,//sHeight
+            350 + i * oneBlockSize,//dx
+            oneBlockSize * map.length + 2,//dy
+            oneBlockSize,//dWidth
+            oneBlockSize//dHeight
         );
     }
 };
@@ -156,12 +206,13 @@ let drawScore = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "white";
     canvasContext.fillText(
-        "Score: " + score,
-        0,
-        oneBlockSize * (map.length + 1)
+        "Score: " + score,//the text
+        0,//x
+        oneBlockSize * (map.length + 1)//y
     );
 };
 
+//putting all visual elements on the display
 let draw = () => {
     canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     createRect(0, 0, canvas.width, canvas.height, "black");
@@ -178,11 +229,12 @@ let drawWalls = () => {
         for (let j = 0; j < map[0].length; j++) {
             if (map[i][j] == 1) {
                 createRect(
-                    j * oneBlockSize,
-                    i * oneBlockSize,
-                    oneBlockSize,
-                    oneBlockSize,
-                    "#342DCA"
+                    j * oneBlockSize,//x
+                    i * oneBlockSize,//y
+                    oneBlockSize,//width
+                    oneBlockSize,//height
+                    "#342DCA"//original color- blue
+                    //"#39FF14"//changing theme color for walls to neon green
                 );
                 if (j > 0 && map[i][j - 1] == 1) {
                     createRect(
