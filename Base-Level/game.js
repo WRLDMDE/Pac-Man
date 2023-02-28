@@ -12,9 +12,9 @@ const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
-let lives = 30;
+let lives = 3;
 let foodCount = 2140;
-let ghostCount = 4;
+let ghostCount = 2;
 let ghostImageLocations = [
     { x: 0, y: 0 },
     { x: 176, y: 0 },
@@ -143,6 +143,7 @@ let gameOver = () => {
     drawGameOver();
     //clear interval stops everything from running
     clearInterval(gameInterval);
+    new Audio("../sounds/gameOver.wav").play();
 }
 
 let drawGameOver = () => {
@@ -159,6 +160,7 @@ let drawWin = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "white";
     canvasContext.fillText("You Win!", 150, 200);
+    new Audio("../sounds/gameWin.wav").play(); //play sound when win
 }
 
 

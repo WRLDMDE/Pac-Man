@@ -9,6 +9,7 @@ class Pacman {
         this.nextDirection = 4;
         this.frameCount = 7;
         this.currentFrame = 1;
+        this.wakaSound = new Audio('../sounds/waka.wav'); //add sounds 
         setInterval(() => {
             this.changeAnimation();
         }, 100);
@@ -33,6 +34,7 @@ class Pacman {
                 ) {
                     map[i][j] = 3;
                     score++;
+                    this.wakaSound.play(); //plays sounds everytime pacman eats a waka
                 }
             }
         }
