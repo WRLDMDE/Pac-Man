@@ -143,7 +143,7 @@ let gameOver = () => {
     drawGameOver();
     //clear interval stops everything from running
     clearInterval(gameInterval);
-    new Audio("../sounds/gameOver.wav").play();
+    new Audio("../sounds/gameOver.wav").play();//play the game over sound
 }
 
 let drawGameOver = () => {

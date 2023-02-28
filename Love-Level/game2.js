@@ -176,6 +176,7 @@ let gameOver = () => {
   drawGameOver();
   //clear interval stops everything from running 
   clearInterval(gameInterval);
+  new Audio("../sounds/gameOver.wav").play();//play the game over sound
 }
 
 //create display for losing game -%
@@ -192,6 +193,7 @@ let drawWin = () => {
   canvasContext.font = "20px Emulogic";
   canvasContext.fillStyle = "white";
   canvasContext.fillText("You Win!", 150, 200);
+  new Audio("../sounds/gameWin.wav").play(); //play sound when win
 }
 //create a gameWin function that checks to see if all pellets are eaten 
 
