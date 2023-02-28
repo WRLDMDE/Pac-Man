@@ -13,8 +13,8 @@ const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
-let lives = 30;
-let foodCount = 4210;
+let lives = 3;
+let foodCount = 4250;
 let ghostCount = 4;
 let ghostImageLocations = [
   { x: 0, y: 0 },
@@ -52,9 +52,9 @@ let map = [
   [0, 0, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 0, 0],
   [0, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1, 0],
   [0, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 0],
-  [0, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 1, 1, 2, 1, 0],
-  [0, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 0, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 0],
-  [0, 1, 2, 1, 2, 1, 2, 2, 1, 1, 2, 1, 2, 1, 2, 1, 0, 0, 0, 1, 2, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2, 1, 2, 1, 0],
+  [1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 1, 1, 2, 1, 1],
+  [2, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 0, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 2],
+  [1, 1, 2, 1, 2, 1, 2, 2, 1, 1, 2, 1, 2, 1, 2, 1, 0, 0, 0, 1, 2, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2, 1, 2, 1, 1],
   [0, 1, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 0],
   [0, 1, 2, 1, 2, 2, 2, 2, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 1, 0],
   [0, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 1, 2, 2, 2, 2, 1, 0],
@@ -138,18 +138,20 @@ let update = () => {
   pacman1.moveProcess();
   pacman1.eat();
   updateGhosts();
+  pacman1.teleport();
   if (pacman1.checkGhostCollision(ghosts)) {
     onGhostCollisionPac();
     restartGame();
   }
   pacman2.moveProcess();
   pacman2.eat();
+  pacman2.teleport();
   updateGhosts();
   if (pacman2.checkGhostCollision(ghosts)) {
     onGhostCollisionMs();
     restartGame();
   }
-  if(score >= foodCount){
+  if(score * 10 >= foodCount){
     drawWin();
     //clear Interval is what stops everyhing from running
     clearInterval(gameInterval);
@@ -170,8 +172,7 @@ let restartGame = () => {
 
 // %
 let gameOver = () => {
-  lives--;
-  drawRemainingLives();
+  // drawRemainingLives();
   drawGameOver();
   //clear interval stops everything from running 
   clearInterval(gameInterval);
@@ -244,7 +245,7 @@ let drawScore = () => {
   canvasContext.fillText(
       "Score: " + score * 10,//the text
       oneBlockSize,//x 
-     (oneBlockSize+ .5) * (map.length + 1)//y, added .5 to align with Lives display
+     (oneBlockSize) * (map.length + 1)//y, added .5 to align with Lives display
   );
 };
 

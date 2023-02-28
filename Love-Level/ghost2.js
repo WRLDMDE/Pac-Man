@@ -266,7 +266,7 @@ class Ghost {
         canvasContext.restore();
         canvasContext.beginPath();
         //shows ghosts range visably if possible. Just changes the color of canvasContext.strokeStyle
-        canvasContext.strokeStyle = "red";
+        canvasContext.strokeStyle = "transparent";
         canvasContext.arc(
             this.x + oneBlockSize / 2,
             this.y + oneBlockSize / 2,

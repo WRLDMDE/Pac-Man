@@ -118,6 +118,14 @@ class Pacman {
             this.moveBackwards();
         }
     }
+    teleport() {
+        if (this.x === 0 && this.y === oneBlockSize * 13) {
+            this.x = oneBlockSize * 34;
+        }
+        else if (this.x === oneBlockSize * 34 && this.y === oneBlockSize * 13){
+            this.x = 0;
+        }
+    }
 
     getMapX() {
         let mapX = parseInt(this.x / oneBlockSize);
