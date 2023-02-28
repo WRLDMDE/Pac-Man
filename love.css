@@ -6,9 +6,8 @@ body{
 }
 
 canvas{
-    box-shadow: 10px 5px 5px black;
-    width: 130vh;
-    left:200px;
+    
+    width: 94vh;
     position: relative;
  
 }
