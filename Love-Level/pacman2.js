@@ -31,11 +31,22 @@ class Pacman {
                     map[i][j] == 2 &&
                     this.getMapX() == j &&
                     this.getMapY() == i
-                ) {
+                ) 
+                {
                     map[i][j] = 3;
                     score++;
                     this.wakaSound.play(); //plays sounds everytime pacman eats a waka
                 }
+                else if (
+                    map[i][j] == 9 && //can eat power pellets
+                    this.getMapX() == j &&
+                    this.getMapY() == i
+                )
+                {
+                    map[i][j] = 3;
+                    score++;
+                    this.wakaSound.play(); //plays sounds everytime pacman eats a waka
+                }  
             }
         }
     }

@@ -37,6 +37,7 @@ let wallInnerColor = "#85017f";
 // MAP //
 // This is used to create the map of the walls.
 // We use 1 for a wall frame , 0 if we don't want a wall, and 2 for our pellets that PacMan will collect.
+ // 9 is for the power pellets that PacMan will eat.
 // 21 COLUMNS // 23 ROWS //
 
 let map = [
@@ -48,7 +49,7 @@ let map = [
   [0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0],
   [0, 0, 0, 1, 2, 2, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 1, 1, 1, 2, 1, 1, 2, 2, 1, 0, 0, 0],
   [0, 0, 0, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 0, 0, 0],
-  [0, 0, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 0, 0],
+  [0, 0, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1, 1, 1, 9, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 0, 0],
   [0, 0, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 0, 0],
   [0, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1, 0],
   [0, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 0],
@@ -108,7 +109,7 @@ let createNewPacman = () => {
 let gameLoop = () => {
   draw();
   update();
-
+  drawPower();
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
@@ -215,6 +216,25 @@ let drawFoods = () => {
               );
           //need to target all positions except for where the ghosts are
           //indices include the 200th index, 220-222th index, 241th index-242th index) might be one less 
+          }
+      }
+  }
+};
+
+let drawPower = () => { //Used for creating power pellets
+  for (let i = 0; i < map.length; i++) {
+      for (let j = 0; j < map[0].length;j++) {
+          //9 within the tilemap is labeled as the open space
+          if (map[i][j] == 9) {
+              //renders a rectangle from the canvas 2D API
+              createRect(
+                  j * oneBlockSize + oneBlockSize / 3,//x position
+                  i * oneBlockSize + oneBlockSize / 3,//y position
+                  oneBlockSize / 3,//width
+                  oneBlockSize / 3,//height
+                  "#01FFF4"//color
+                   //"#NEON BLUE"
+              );
           }
       }
   }
