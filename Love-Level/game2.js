@@ -3,6 +3,8 @@ const canvasContext = canvas.getContext("2d");
 const pacmanFrames = document.getElementById("animation1");
 const pacmanFrames2 = document.getElementById("animation2");
 const ghostFrames = document.getElementById("ghosts");
+const gameOverScreen = document.getElementById("gameOverScreen");
+const winScreen = document.getElementById("winScreen");
 
 let createRect = (x, y, width, height, color) => {
   canvasContext.fillStyle = color;
@@ -14,7 +16,7 @@ const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
 let lives = 3;
-let foodCount = 4250;
+let foodCount = 10 //4250;
 let ghostCount = 4;
 let ghostImageLocations = [
   { x: 0, y: 0 },
@@ -156,6 +158,7 @@ let update = () => {
     drawWin();
     //clear Interval is what stops everyhing from running
     clearInterval(gameInterval);
+    //new Audio("../sounds/gameWin.wav").play(); //play sound when win
     //should move onto next level instead
 }
 };
@@ -183,18 +186,20 @@ let gameOver = () => {
 //create display for losing game -%
 let drawGameOver = () => {
   //canvas content is used for drawing onto a canvas
-  canvasContext.font = "20px Emulogic";
-  canvasContext.fillStyle = "white";
-  canvasContext.fillText("Game Over", 150, 200);
-  //create a replay button along with an event handler that will restart game 
+  // canvasContext.font = "20px Emulogic";
+  // canvasContext.fillStyle = "white";
+  // canvasContext.fillText("Game Over", 150, 200);
+  //create a replay button along with an event handler that will restart game
+  gameOverScreen.style.display = 'flex'; 
 }
 
 //create display for win -%
 let drawWin = () => {
-  canvasContext.font = "20px Emulogic";
-  canvasContext.fillStyle = "white";
-  canvasContext.fillText("You Win!", 150, 200);
-  new Audio("../sounds/gameWin.wav").play(); //play sound when win
+  // canvasContext.font = "20px Emulogic";
+  // canvasContext.fillStyle = "white";
+  // canvasContext.fillText("You Win!", 150, 200);
+  winScreen.style.display = 'flex';
+   new Audio("../sounds/gameWin.wav").play(); //play sound when win
 }
 //create a gameWin function that checks to see if all pellets are eaten 
 

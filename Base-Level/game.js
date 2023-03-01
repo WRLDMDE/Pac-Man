@@ -150,6 +150,7 @@ let restartGame = () => {
 
 let gameOver = () => {
     drawGameOver();
+    drawRemainingLives();
     //clear interval stops everything from running
     clearInterval(gameInterval);
     new Audio("../sounds/gameOver.wav").play();//play the game over sound
