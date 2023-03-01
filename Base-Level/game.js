@@ -8,6 +8,7 @@ let createRect = (x, y, width, height, color) => {
     canvasContext.fillRect(x, y, width, height);
 };
 
+
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
@@ -35,6 +36,7 @@ let wallInnerColor = "black";
 // MAP // 
 // This is used to create the map of the walls.
  // We use 1 for a wall frame , 0 if we don't want a wall, and 2 for our pellets that PacMan will collect.
+ // 9 is for the power pellets that PacMan will eat.
  // 21 COLUMNS // 23 ROWS //
 
 let map = [
@@ -44,14 +46,14 @@ let map = [
     [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1],
-    [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1],
+    [1, 9, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 9, 1],
     [1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1],
     [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 0, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1],
     [2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2],
     [1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1, 1],
     [0, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 9, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
@@ -59,7 +61,7 @@ let map = [
     [1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 2, 1, 1],
     [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1],
     [1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 9, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 9, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
@@ -92,7 +94,7 @@ let createNewPacman = () => {
 let gameLoop = () => {
     draw();
     update();
-    //draw();
+    drawPower();
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
@@ -111,6 +113,7 @@ let onGhostCollision = () => {
 };
 
 let update = () => {
+    
     pacman.moveProcess();
     pacman.eat();
     updateGhosts();
@@ -165,7 +168,7 @@ let drawWin = () => {
 
 
 
-let drawFoods = () => {
+let drawFoods = () => { //used for creating pellets
     for (let i = 0; i < map.length; i++) {
         for (let j = 0; j < map[0].length; j++) {
             //2 within the tilemap is labeled as the open space
@@ -184,6 +187,24 @@ let drawFoods = () => {
     }
 };
 
+let drawPower = () => { //Used for creating power pellets
+    for (let i = 0; i < map.length; i++) {
+        for (let j = 0; j < map[0].length;j++) {
+            //9 within the tilemap is labeled as the open space
+            if (map[i][j] == 9) {
+                //renders a rectangle from the canvas 2D API
+                createRect(
+                    j * oneBlockSize + oneBlockSize / 3,//x position
+                    i * oneBlockSize + oneBlockSize / 3,//y position
+                    oneBlockSize / 3,//width
+                    oneBlockSize / 3,//height
+                    "#01FFF4"//color
+                     //"#NEON BLUE"
+                );
+            }
+        }
+    }
+};
 let drawRemainingLives = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "white";
