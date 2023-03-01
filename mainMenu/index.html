@@ -1,12 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>PacMan</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">    
+  <link rel="icon" href="https://www.freeiconspng.com/thumbs/pacman-png/pacman-png-18.png" type="image/icon type">
+
 </head>
 <body>
-    
+    <video autoplay muted loop id="myVideo">
+        <source src="pacman-vaporwave.mp4" type="video/mp4">
+      </video>
+  <div id = 'container'>
+
+    <!-- Start button -->
+    <button id="start-button" class="retro-button" onclick=" window.location.href= '../Base-Level/singlePlayer.html';">Single-Player</button>
+     
+    <!-- Play Now -->
+    <button id="play-now-button" class="retro-button" onclick=" window.location.href= '../Love-Level/multiPlayer.html';">Multi-Player</button>
+</div>
+
+  <script src="../script/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+canvas {
+    border: 1px solid black;
+    background-image: url('../gif/index.gif');
+    background-repeat: no-repeat;
+}
+
+#container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Game name animation */
+
+/* Styling for the retro 2D button */
+.retro-button {
+    background-color: #b5b5b5;
+    color: #ffffff;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px #999;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Styling for the Start button */
+#start-button {
+    background-color: transparent;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #135c81;
+    position: absolute;
+    top: 280px;
+    left: 43.5%;
+    font-size: 13px;
+    cursor: pointer;
+    /* Mouse pointer on hover */
+
+}
+
+/* Styling for the Play-Now button */
+#play-now-button {
+    background-color: transparent;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #135c81;
+    position: absolute;
+    top: 340px;
+    left: 41.5%;
+    font-size: 13px;
+    cursor: pointer;
+    /* Mouse pointer on hover */
+
+}
+
+/* Darker background on mouse-over */
+#start-button:hover {
+    background-color: #fed037;
+}
+
+/* Darker background on mouse-over */
+#play-now-button:hover {
+    background-color: #fed037;
+}
+
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn:hover {
+    background: #ddd;
+    color: black;
+}
