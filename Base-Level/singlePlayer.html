@@ -16,6 +16,38 @@
         <img id="animation" src="../animations.gif" width="140" height="20">
         <img id="ghosts" src="../ghost.png" >
     </div>
+
+    <div id = "gameOverScreen" style = "display: none;">
+        <div id = "losingtitle">
+            <h2> Game Over</h2>
+    
+        </div>
+        <div id ="deadPacMan image">
+            <!-- <img src = "https://c4.wallpaperflare.com/wallpaper/93/238/547/pacman-dead-blood-blue-hd-wallpaper-preview.jpg" alt = "deadPacMan"> -->
+            <img id = "gif" src = "https://i.gifer.com/origin/50/5016760dd9f147e7a445529ed8ff40de_w200.gif" alt = "death">
+        </div>
+        <div>
+            <button id = "replayButton" onclick = "window.location.reload();">Replay</button>
+            <button id = "menuButton" onclick = "window.location.href = 'index2.html';"> Menu </button>
+        </div>
+    </div> 
+
+
+    <div id = "winScreen" style = "display: none;">
+        <div id = "wintitle">
+            <h2> You Win!</h2>
+        </div>
+        <div>
+             <!-- <img id = "happyPacManimg" src = "https://media.tenor.com/4a-eNRgYpRwAAAAd/pacman-pacman-dance.gif" alt = "winninggif">  -->
+            <!-- <img id ="happyPacManimg" src="https://pacman99challenge.com/img/pacman_02.5367ee21.png" alt="winninggif"> -->
+            <img id = "happyPacManimg" src = "https://usagif.com/wp-content/uploads/2022/fzk5d/60-pacman-spinning-dance.gif" alt = "winninggif"> 
+        </div>
+        <div id ="buttons">
+            <button id = "winreplayButton" onclick = "window.location.reload();">Replay</button>
+            <button id = "winmenuButton" onclick = "window.location.href = 'index2.html';"> Menu </button>
+        </div>
+    </div>
+   
     <script src="ghost.js"></script>
     <script src="pacman.js"></script>
     <script src="game.js"></script>

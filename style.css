@@ -1,10 +1,19 @@
-body{
-    background-color: black;
-    display: flex;
-    align-items: center;
-    flex-direction:column;
+*, *::after , *::before {
+    box-sizing: border-box;
+    font-family: "Lucida Console", "Courier New", monospace;
 }
 
+body{
+    display: flex;
+    
+    margin: 0;
+    width: 100 vw;
+    background-color: black;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
 canvas{
     box-shadow: 10px 5px 5px black;
     width: 130vh;
@@ -13,6 +22,119 @@ canvas{
  
 }
 
+/* From https://css.glass */
+#gameOverScreen {
+    background-color: black;background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 30px double #ff0101;
+    font-size: 3em;
+    margin-top: 0;
+    margin-left: 31%;
+    margin-right: 30%;
+    flex-direction: column;
+    position: absolute;
+    color: white;
+    /* here you would want to change this property in js to display flex */
+ justify-content: center;
+    align-items: center;
+    text-align: center; 
+    top: 0;
+    bottom: 14.5%; 
+    left: 0;
+    right: 0;
+    /* background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3); */
+}
+
+
+
+
+#winScreen {
+    /* font-size: 3em;
+    background-color: black;background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 30px double #95ff01;
+    flex-direction: column;
+    position: absolute;
+    color: white;
+    /* here you would want to change this property in js to display flex */
+    /* justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 0;
+    top: 0;
+    bottom: 15.5%; 
+    left: 0;
+    right: 0; */ 
+    
+/*new*/
+
+    background-color: black;background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 30px double #99ff01;
+    font-size: 1.75em;
+    margin-top: 0;
+    margin-left: 31%;
+    margin-right: 30%;
+    flex-direction: column;
+    position: absolute;
+    color: white;
+    /* here you would want to change this property in js to display flex */
+ justify-content: center;
+    align-items: center;
+    text-align: center; 
+    top: 0;
+    bottom: 14.5%; 
+    left: 0;
+    right: 0;
+}
+
+#wintitle{
+    font-size: 2em;
+}
+
+#happyPacManimg{
+    max-height: 100%;
+    max-width: 100%;
+ }
+
+button {
+    padding: 5%;
+    font-size: 40px;
+    border-radius: 16px;
+    /* color: white;
+    background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3); */
+
+}
+
+button:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+#gif {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 #ghosts,#animation{
     display: none;
-}  
+}

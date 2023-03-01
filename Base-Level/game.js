@@ -2,6 +2,10 @@ const canvas = document.getElementById("canvas");
 const canvasContext = canvas.getContext("2d");
 const pacmanFrames = document.getElementById("animation");
 const ghostFrames = document.getElementById("ghosts");
+const gameOverScreen = document.getElementById("gameOverScreen");
+const winScreen = document.getElementById("winScreen");
+
+const screenPause = document.querySelector('#pauseScreen');
 
 let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
@@ -124,19 +128,21 @@ let update = () => {
         drawWin();
         //clear interval stops everything from ruuning
         clearInterval(gameInterval)
+        new Audio("../sounds/gameWin.wav").play(); //play sound when win
         //should move into the next level
     }
 
 };
 
 //resetting the game 
+
 let restartGame = () => {
     createNewPacman();
     createGhosts();
 
-    if (lives === 0){
-        gameOver();
-    }
+    // if (lives === 0){
+    //     gameOver();
+    // }
 }
 
 let gameOver = () => {
@@ -148,22 +154,35 @@ let gameOver = () => {
 
 let drawGameOver = () => {
     //canvas content is used for drawing onto a canvas
-     canvasContext.font = "20px Emulogic";
-     canvasContext.fillStyle = "white";
-     canvasContext.fillText("Game Over", 150, 200);
+    //  canvasContext.font = "20px Emulogic";
+    //  canvasContext.fillStyle = "white";
+    //  canvasContext.fillText("Game Over", 150, 200);
     //create a replay button along with an event handler that will restart game
-    
+    gameOverScreen.style.display = 'flex';
+     //scoreDisplay.textContent = ` Score: ${score}`;
+
 }
 
 //create display for win -%
 let drawWin = () => {
-    canvasContext.font = "20px Emulogic";
-    canvasContext.fillStyle = "white";
-    canvasContext.fillText("You Win!", 150, 200);
-    new Audio("../sounds/gameWin.wav").play(); //play sound when win
+    // canvasContext.font = "20px Emulogic";
+    // canvasContext.fillStyle = "white";
+    // canvasContext.fillText("You Win!", 150, 200);
+    //new Audio("../sounds/gameWin.wav").play(); //play sound when win
+    winScreen.style.display = 'flex';
 }
 
+//creating pause feature 
+// function pressedPause(){
+//     screenPause.style.display = 'flex';
+//     clearTimeout(timerId);
+//   }
+//   //unpause/resume feature 
+//   function pressedResume(){
+    
+//     screenPause.style.display = 'none';
 
+//   }
 
 let drawFoods = () => {
     for (let i = 0; i < map.length; i++) {
@@ -197,7 +216,7 @@ let drawRemainingLives = () => {
             0,//sy
             oneBlockSize,//sWidth
             oneBlockSize,//sHeight
-            350 + i * oneBlockSize,//dx
+            280 + i * oneBlockSize,//dx - switch 350 to 280
             oneBlockSize * map.length + 2,//dy
             oneBlockSize,//dWidth
             oneBlockSize//dHeight
