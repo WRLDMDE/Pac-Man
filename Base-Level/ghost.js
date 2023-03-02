@@ -147,7 +147,7 @@ class Ghost {
         } else {
             this.moveBackwards();
         }
-        console.log(this.direction);
+        // console.log(this.direction);
     }
 
     calculateNewDirection(map, destX, destY) {
