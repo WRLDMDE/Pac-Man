@@ -376,21 +376,49 @@ createNewPacman();
 createGhosts();
 gameLoop();
 
+let image2 = document.querySelector('body > div:nth-child(5) > img');
+let image = document.querySelector('body > div:nth-child(5) > img:nth-child(2)');
+
+
 window.addEventListener("keydown", (event) => {
   let k = event.keyCode;
   setTimeout(() => {
     if (k == 37) {
       // left arrow or a
       pacman2.nextDirection = DIRECTION_LEFT;
+      image.src = './experiment/leftstick (2).png'
     } else if (k == 38) {
       // up arrow or w
       pacman2.nextDirection = DIRECTION_UP;
+      image.src = './experiment/topstick (2).png'
     } else if (k == 39) {
       // right arrow or d
       pacman2.nextDirection = DIRECTION_RIGHT;
+      image.src = './experiment/rightstick (2).png'
     } else if (k == 40) {
       // bottom arrow or s
       pacman2.nextDirection = DIRECTION_BOTTOM;
+      image.src = './experiment/bottomstick (2).png'
+    }
+    
+  }, 1);
+});
+
+window.addEventListener("keyup", (event) => {
+  let k = event.keyCode;
+  setTimeout(() => {
+    if (k == 37) {
+      // left arrow or a
+      image.src = './experiment/middlestick (2).png'
+    } else if (k == 38) {
+      // up arrow or w
+      image.src = './experiment/middlestick (2).png'
+    } else if (k == 39) {
+      // right arrow or d
+      image.src = './experiment/middlestick (2).png'
+    } else if (k == 40) {
+      // bottom arrow or s
+      image.src = './experiment/middlestick (2).png'
     }
     
   }, 1);
@@ -402,16 +430,63 @@ window.addEventListener("keydown", (event) => {
     if (k == 65) {
       // left arrow or a
       pacman1.nextDirection = DIRECTION_LEFT;
+      image2.src = './experiment/leftstick.png'
     } else if (k == 87) {
       // up arrow or w
       pacman1.nextDirection = DIRECTION_UP;
+      image2.src = './experiment/topstick.png'
     } else if (k == 68) {
       // right arrow or d
       pacman1.nextDirection = DIRECTION_RIGHT;
+      image2.src = './experiment/rightstick.png'
     } else if (k == 83) {
       // bottom arrow or s
       pacman1.nextDirection = DIRECTION_BOTTOM;
+      image2.src = './experiment/bottomstick.png'
     }
     
   }, 1);
 });
+
+window.addEventListener("keyup", (event) => {
+  let k = event.keyCode;
+  setTimeout(() => {
+    if (k == 65) {
+      // left arrow or a
+      image2.src = './experiment/middlestick.png'
+    } else if (k == 87) {
+      // up arrow or w
+      image2.src = './experiment/middlestick.png'
+    } else if (k == 68) {
+      // right arrow or d
+      image2.src = './experiment/middlestick.png'
+    } else if (k == 83) {
+      // bottom arrow or s
+      image2.src = './experiment/middlestick.png'
+    }
+    
+  }, 1);
+});
+
+// let newImage = new Image();
+// newImage.src = 'https://fjolt.com/images/misc/202203281.png'
+
+// // When it loads
+// newImage.onload = (event) => {
+//     // Draw the image onto the context
+//     //ctx.drawImage(image, x, y, width, height)
+//     event.preventDefault();
+//     canvasContext.drawImage(newImage, -100, 500, 250, 208);
+
+// }
+
+// var update = true; // if true redraw
+// function renderFunction(){
+//     if(update){  // only raw if needed
+//        update = false;
+//        canvasContext.drawImage(newImage, 0, 0, canvas.width, canvas.height);
+
+//     }
+//     requestAnimationFrame(renderFunction);
+// }
+// requestAnimationFrame(renderFunction);

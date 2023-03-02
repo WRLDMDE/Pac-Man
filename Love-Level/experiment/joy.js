@@ -1,20 +1,21 @@
 let image = document.querySelector('img');
+document.body.style.backgroundColor = "black"
 
 window.addEventListener("keydown", (event) => {
     let k = event.keyCode;
     setTimeout(() => {
         if (k == 37 || k == 65) {
             // left arrow or a
-            image.src = './e4.png'
+            image.src = './leftstick.png'
         } else if (k == 38 || k == 87) {
             // up arrow or w
-            image.src = './e2.png'
+            image.src = './topstick.png'
         } else if (k == 39 || k == 68) {
             // right arrow or d
-            image.src = './e3.png'
+            image.src = './rightstick.png'
         } else if (k == 40 || k == 83) {
             // bottom arrow or s
-            image.src = './e5.png'
+            image.src = './bottomstick.png'
         }
     }, 0);
 });
@@ -24,16 +25,16 @@ window.addEventListener("keyup", (event) => {
     setTimeout(() => {
         if (k == 37 || k == 65) {
             // left arrow or a
-            image.src = './e1.png'
+            image.src = './middlestick.png'
         } else if (k == 38 || k == 87) {
             // up arrow or w
-            image.src = './e1.png'
+            image.src = './middlestick.png'
         } else if (k == 39 || k == 68) {
             // right arrow or d
-            image.src = './e1.png'
+            image.src = './middlestick.png'
         } else if (k == 40 || k == 83) {
             // bottom arrow or s
-            image.src = './e1.png'
+            image.src = './middlestick.png'
         }
     }, 0);
 });

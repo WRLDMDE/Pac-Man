@@ -335,6 +335,8 @@ createNewPacman();
 createGhosts();
 gameLoop();
 
+let image = document.querySelector('body > img');
+
 
 window.addEventListener("keydown", (event) => {
     let k = event.keyCode;
@@ -342,15 +344,39 @@ window.addEventListener("keydown", (event) => {
         if (k == 37 || k == 65) {
             // left arrow or a
             pacman.nextDirection = DIRECTION_LEFT;
+            image.src = './../Love-Level/experiment/leftstick.png'
         } else if (k == 38 || k == 87) {
             // up arrow or w
             pacman.nextDirection = DIRECTION_UP;
+            image.src = './../Love-Level/experiment/topstick.png'
         } else if (k == 39 || k == 68) {
             // right arrow or d
             pacman.nextDirection = DIRECTION_RIGHT;
+            image.src = './../Love-Level/experiment/rightstick.png'
         } else if (k == 40 || k == 83) {
             // bottom arrow or s
             pacman.nextDirection = DIRECTION_BOTTOM;
+            image.src = './../Love-Level/experiment/bottomstick.png'
         }
     }, 1);
 });
+
+window.addEventListener("keyup", (event) => {
+    let k = event.keyCode;
+    setTimeout(() => {
+        if (k == 37 || k == 65) {
+            // left arrow or a
+            image.src = './../Love-Level/experiment/middlestick.png'
+        } else if (k == 38 || k == 87) {
+            // up arrow or w
+            image.src = './../Love-Level/experiment/middlestick.png'
+        } else if (k == 39 || k == 68) {
+            // right arrow or d
+            image.src = './../Love-Level/experiment/middlestick.png'
+        } else if (k == 40 || k == 83) {
+            // bottom arrow or s
+            image.src = './../Love-Level/experiment/middlestick.png'
+        }
+    }, 1);
+});
+

@@ -1,25 +1,28 @@
-*, *::after , *::before {
+*,
+*::after,
+*::before {
     box-sizing: border-box;
     /* font-family: "Lucida Console", "Courier New", monospace; */
     font-family: 'Press Start 2P', cursive;
 }
 
-body{
+body {
     background-color: black;
     display: flex;
     align-items: center;
-    flex-direction:column;
+    flex-direction: column;
 }
 
-canvas{
-    
+canvas {
+
     width: 94vh;
     position: relative;
- 
+
 }
 
 #gameOverScreen {
-    background-color: black;background: rgba(255, 255, 255, 0.2);
+    background-color: black;
+    background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     border: 30px double #ff0101;
@@ -33,11 +36,11 @@ canvas{
     position: absolute;
     color: white;
     /* here you would want to change this property in js to display flex */
- justify-content: center;
+    justify-content: center;
     align-items: center;
-    text-align: center; 
+    text-align: center;
     top: 0;
-    bottom: 0; 
+    bottom: 0;
     left: 0;
     right: 0;
     /* background: rgba(255, 255, 255, 0.2);
@@ -53,7 +56,8 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
 
 #winScreen {
 
-    background-color: black;background: rgba(255, 255, 255, 0.2);
+    background-color: black;
+    background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     border: 30px double #99ff01;
@@ -65,11 +69,11 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
     position: absolute;
     color: white;
     /* here you would want to change this property in js to display flex */
- justify-content: center;
+    justify-content: center;
     align-items: center;
-    text-align: center; 
+    text-align: center;
     top: 0;
-    bottom: 0; 
+    bottom: 0;
     left: 0;
     right: 0;
 }
@@ -78,10 +82,10 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
     font-size: 2em;
 } */
 
-#happyPacManimg{
+#happyPacManimg {
     max-height: 100%;
     max-width: 100%;
- }
+}
 
 button {
     margin: 1%;
@@ -93,11 +97,11 @@ button {
 button:hover {
     color: white;
     background: rgba(255, 255, 255, 0.2);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 
@@ -106,6 +110,11 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     max-width: 100%;
 }
 
-#ghosts,#animation{
+#ghosts,
+#animation {
     display: none;
-}  
+}
+
+#joy1 {
+    top: 500px
+}
