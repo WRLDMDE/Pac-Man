@@ -103,3 +103,53 @@ button:hover {
 #animation {
     display: none;
 }
+
+#leftJoy {
+    z-index: -2;
+    margin-top: 0;
+    margin-left: 0%;
+    margin-right: 0%;
+    flex-direction: row;
+    position: absolute;
+    /* justify-content: left; */
+    /* align-items: center; */
+    text-align: left;
+    top: 300px;
+    bottom: 0;
+    left: 120px;
+    right: 0;
+}
+
+#wasd {
+
+    z-index: -1;
+    flex-direction: row;
+    position: absolute;
+    /* justify-content: left; */
+    /* align-items: center; */
+    text-align: left;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    left: 90px;
+}
+
+#arrow {
+
+    z-index: -1;
+
+    flex-direction: row;
+    position: absolute;
+    /* justify-content: left; */
+    /* align-items: center; */
+    text-align: left;
+    top: 600px;
+    bottom: 0;
+    left: 0;
+    left: 90px;
+}
+
+.resize {
+    width: 200px;
+    height: auto;
+}

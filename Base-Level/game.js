@@ -335,7 +335,8 @@ createNewPacman();
 createGhosts();
 gameLoop();
 
-let image = document.querySelector('body > img');
+let image = document.querySelector('#leftJoy > img');
+let left2 = document.querySelector('#leftJoy')
 
 
 window.addEventListener("keydown", (event) => {
@@ -345,18 +346,24 @@ window.addEventListener("keydown", (event) => {
             // left arrow or a
             pacman.nextDirection = DIRECTION_LEFT;
             image.src = './../Love-Level/experiment/leftstick.png'
+            left2.style.left = "40px"
+            left2.style.top = "340px"
         } else if (k == 38 || k == 87) {
             // up arrow or w
             pacman.nextDirection = DIRECTION_UP;
             image.src = './../Love-Level/experiment/topstick.png'
+            left2.style.top = "270px"
         } else if (k == 39 || k == 68) {
             // right arrow or d
             pacman.nextDirection = DIRECTION_RIGHT;
             image.src = './../Love-Level/experiment/rightstick.png'
+            left2.style.left = "150px"
+            left2.style.top = "340px"
         } else if (k == 40 || k == 83) {
             // bottom arrow or s
             pacman.nextDirection = DIRECTION_BOTTOM;
             image.src = './../Love-Level/experiment/bottomstick.png'
+            left2.style.top = "330px"
         }
     }, 1);
 });
@@ -367,15 +374,21 @@ window.addEventListener("keyup", (event) => {
         if (k == 37 || k == 65) {
             // left arrow or a
             image.src = './../Love-Level/experiment/middlestick.png'
+            left2.style.left = "120px"
+            left2.style.top = "300px"
         } else if (k == 38 || k == 87) {
             // up arrow or w
             image.src = './../Love-Level/experiment/middlestick.png'
+            left2.style.top = "300px"
         } else if (k == 39 || k == 68) {
             // right arrow or d
             image.src = './../Love-Level/experiment/middlestick.png'
+            left2.style.left = "120px"
+            left2.style.top = "300px"
         } else if (k == 40 || k == 83) {
             // bottom arrow or s
             image.src = './../Love-Level/experiment/middlestick.png'
+            left2.style.top = "300px"
         }
     }, 1);
 });
