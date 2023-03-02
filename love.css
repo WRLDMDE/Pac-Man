@@ -78,9 +78,39 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
     right: 0;
 }
 
-/* #wintitle{
-    font-size: 2em;
-} */
+#rightJoy {
+
+    z-index: -1;
+    margin-top: 0;
+    margin-left: 0%;
+    margin-right: 0%;
+    flex-direction: row;
+    position: absolute;
+    /* justify-content: left; */
+    /* align-items: left; */
+    text-align: right;
+    top: 300px;
+    bottom: 0;
+    left: 0;
+    right: 120px;
+}
+
+#leftJoy {
+
+    z-index: -2;
+    margin-top: 0;
+    margin-left: 0%;
+    margin-right: 0%;
+    flex-direction: row;
+    position: absolute;
+    /* justify-content: left; */
+    /* align-items: center; */
+    text-align: left;
+    top: 300px;
+    bottom: 0;
+    left: 120px;
+    right: 0;
+}
 
 #happyPacManimg {
     max-height: 100%;

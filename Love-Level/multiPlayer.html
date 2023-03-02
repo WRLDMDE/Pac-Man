@@ -15,8 +15,8 @@
 <body style = "background-color: #51005c;">
     <canvas id="canvas" width="700" height="700" ></canvas>
     <div>
-        <img id="animation1" src="../animations.gif" width="140" height="20">
-        <img id="animation2" src="../ezgif.com-apng-to-gif-2.gif" width="140" height="20">
+        <img id="animation1" src="../animations.gif" width="140" height="20" hidden>
+        <img id="animation2" src="../ezgif.com-apng-to-gif-2.gif" width="140" height="20" hidden>
         <img id="ghosts" src="../ghost.png" >
     </div>
     <div id = "gameOverScreen" style = "display: none;">
@@ -53,8 +53,10 @@
             <button id = "winmenuButton" onclick = "window.location.href = '../index.html';"> Menu </button>
         </div>
     </div>
-    <div>
-        <img src="./experiment/middlestick.png" >
+    <div id = "leftJoy">
+        <img src="./experiment/middlestick.png">
+    </div>
+    <div id = "rightJoy"> 
         <img src="./experiment/middlestick (2).png">
     </div>
     <script src="ghost2.js"></script>

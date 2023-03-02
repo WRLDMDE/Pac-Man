@@ -268,12 +268,23 @@ let drawRemainingLives = () => {
         0,//sy
         oneBlockSize, //sWidth
         oneBlockSize, //sHeight
-        300 + i * oneBlockSize, //dx
-        oneBlockSize * map.length + 15,//dy
+        280 + i * oneBlockSize, //dx
+        oneBlockSize * map.length + 5,//dy
         oneBlockSize,//dWidth 
         oneBlockSize//dHeight
     );
 }
+canvasContext.drawImage(
+  pacmanFrames2,//img
+  2 * oneBlockSize,//sx
+  0,//sy
+  oneBlockSize,//sWidth
+  oneBlockSize,//sHeight
+  350 + 1 * oneBlockSize,//dx - switch 350 to 280
+  oneBlockSize * map.length + 5,//dy
+  oneBlockSize,//dWidth
+  oneBlockSize//dHeight
+);
 };
 
 let drawScore = () => {
@@ -376,8 +387,10 @@ createNewPacman();
 createGhosts();
 gameLoop();
 
-let image2 = document.querySelector('body > div:nth-child(5) > img');
-let image = document.querySelector('body > div:nth-child(5) > img:nth-child(2)');
+let image2 = document.querySelector('#leftJoy > img');
+let left2 = document.querySelector('#leftJoy')
+let image = document.querySelector('#rightJoy > img');
+let right2 = document.querySelector('#rightJoy')
 
 
 window.addEventListener("keydown", (event) => {
@@ -387,18 +400,24 @@ window.addEventListener("keydown", (event) => {
       // left arrow or a
       pacman2.nextDirection = DIRECTION_LEFT;
       image.src = './experiment/leftstick (2).png'
+      right2.style.right = "160px"
+      right2.style.top = "340px"
     } else if (k == 38) {
       // up arrow or w
       pacman2.nextDirection = DIRECTION_UP;
       image.src = './experiment/topstick (2).png'
+      right2.style.top = "270px"
     } else if (k == 39) {
       // right arrow or d
       pacman2.nextDirection = DIRECTION_RIGHT;
       image.src = './experiment/rightstick (2).png'
+      right2.style.right = "50px"
+      right2.style.top = "340px"
     } else if (k == 40) {
       // bottom arrow or s
       pacman2.nextDirection = DIRECTION_BOTTOM;
       image.src = './experiment/bottomstick (2).png'
+      right2.style.top = "330px"
     }
     
   }, 1);
@@ -410,15 +429,21 @@ window.addEventListener("keyup", (event) => {
     if (k == 37) {
       // left arrow or a
       image.src = './experiment/middlestick (2).png'
+      right2.style.right = "120px"
+      right2.style.top = "300px"
     } else if (k == 38) {
       // up arrow or w
       image.src = './experiment/middlestick (2).png'
+      right2.style.top = "300px"
     } else if (k == 39) {
       // right arrow or d
       image.src = './experiment/middlestick (2).png'
+      right2.style.right = "120px"
+      right2.style.top = "300px"
     } else if (k == 40) {
       // bottom arrow or s
       image.src = './experiment/middlestick (2).png'
+      right2.style.top = "300px"
     }
     
   }, 1);
@@ -431,18 +456,24 @@ window.addEventListener("keydown", (event) => {
       // left arrow or a
       pacman1.nextDirection = DIRECTION_LEFT;
       image2.src = './experiment/leftstick.png'
+      left2.style.left = "40px"
+      left2.style.top = "340px"
     } else if (k == 87) {
       // up arrow or w
       pacman1.nextDirection = DIRECTION_UP;
       image2.src = './experiment/topstick.png'
+      left2.style.top = "270px"
     } else if (k == 68) {
       // right arrow or d
       pacman1.nextDirection = DIRECTION_RIGHT;
       image2.src = './experiment/rightstick.png'
+      left2.style.left = "150px"
+      left2.style.top = "340px"
     } else if (k == 83) {
       // bottom arrow or s
       pacman1.nextDirection = DIRECTION_BOTTOM;
       image2.src = './experiment/bottomstick.png'
+      left2.style.top = "330px"
     }
     
   }, 1);
@@ -454,19 +485,28 @@ window.addEventListener("keyup", (event) => {
     if (k == 65) {
       // left arrow or a
       image2.src = './experiment/middlestick.png'
+      left2.style.left = "120px"
+      left2.style.top = "300px"
     } else if (k == 87) {
       // up arrow or w
       image2.src = './experiment/middlestick.png'
+      left2.style.top = "300px"
     } else if (k == 68) {
       // right arrow or d
       image2.src = './experiment/middlestick.png'
+      left2.style.left = "120px"
+      left2.style.top = "300px"
     } else if (k == 83) {
       // bottom arrow or s
       image2.src = './experiment/middlestick.png'
+      left2.style.top = "300px"
     }
     
   }, 1);
 });
+
+let joy = document.body.querySelector('#joysticks');
+joy.style.display = 'flex';
 
 // let newImage = new Image();
 // newImage.src = 'https://fjolt.com/images/misc/202203281.png'
