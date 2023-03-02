@@ -38,7 +38,7 @@ canvas {
     border-radius: 8px;
     box-shadow: 0 4px #999;
     font-family: 'Press Start 2P', cursive;
-    margin-left: -280px;
+    margin-left: -290px;
     /* margin-top: 120px; */
     ;
 }
@@ -68,20 +68,20 @@ canvas {
     left: 41.5%;
     font-size: 25px;
     cursor: pointer;
-    margin-top: 180px;
-    margin-left: -250px;
+    margin-top: 190px;
+    margin-left: -285px;
     /* Mouse pointe on hover */
 
 }
 
 /* Darker background on mouse-over */
 #start-button:hover {
-    background-color: #fed037;
+    background-color: #eec64c;
 }
 
 /* Darker background on mouse-over */
 #play-now-button:hover {
-    background-color: #fed037;
+    background-color: #eec64c;
 }
 
 
