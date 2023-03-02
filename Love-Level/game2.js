@@ -5,6 +5,7 @@ const pacmanFrames2 = document.getElementById("animation2");
 const ghostFrames = document.getElementById("ghosts");
 const gameOverScreen = document.getElementById("gameOverScreen");
 const winScreen = document.getElementById("winScreen");
+const scoreDisplay = document.getElementById("scoredisplay")
 
 let createRect = (x, y, width, height, color) => {
   canvasContext.fillStyle = color;
@@ -16,7 +17,7 @@ const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
 let lives = 3;
-let foodCount = 10 //4250;
+let foodCount = 4250;
 let ghostCount = 4;
 let ghostImageLocations = [
   { x: 0, y: 0 },
@@ -180,6 +181,7 @@ let gameOver = () => {
   drawGameOver();
   //clear interval stops everything from running 
   clearInterval(gameInterval);
+  scoreDisplay.textContent = `Score ${(score * 10)-10}`;
   new Audio("../sounds/gameOver.wav").play();//play the game over sound
 }
 

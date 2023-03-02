@@ -4,8 +4,7 @@ const pacmanFrames = document.getElementById("animation");
 const ghostFrames = document.getElementById("ghosts");
 const gameOverScreen = document.getElementById("gameOverScreen");
 const winScreen = document.getElementById("winScreen");
-
-const screenPause = document.querySelector('#pauseScreen');
+const scoreDisplay = document.getElementById("scoredisplay")
 
 let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
@@ -113,6 +112,7 @@ let onGhostCollision = () => {
     restartPacmanAndGhosts();
     if (lives == 0) {
         gameOver();
+    
     }
 };
 
@@ -131,6 +131,7 @@ let update = () => {
         drawWin();
         //clear interval stops everything from ruuning
         clearInterval(gameInterval)
+       // scoreDisplay.textContent = `Score ${(score *10)}`;
         new Audio("../sounds/gameWin.wav").play(); //play sound when win
         //should move into the next level
     }
@@ -142,51 +143,27 @@ let update = () => {
 let restartGame = () => {
     createNewPacman();
     createGhosts();
-
-    // if (lives === 0){
-    //     gameOver();
-    // }
 }
 
 let gameOver = () => {
     drawGameOver();
-    drawRemainingLives();
     //clear interval stops everything from running
     clearInterval(gameInterval);
+    scoreDisplay.textContent = `Score ${(score *10)}`;
     new Audio("../sounds/gameOver.wav").play();//play the game over sound
+    
 }
 
 let drawGameOver = () => {
-    //canvas content is used for drawing onto a canvas
-    //  canvasContext.font = "20px Emulogic";
-    //  canvasContext.fillStyle = "white";
-    //  canvasContext.fillText("Game Over", 150, 200);
-    //create a replay button along with an event handler that will restart game
     gameOverScreen.style.display = 'flex';
-     //scoreDisplay.textContent = ` Score: ${score}`;
 
 }
 
 //create display for win -%
 let drawWin = () => {
-    // canvasContext.font = "20px Emulogic";
-    // canvasContext.fillStyle = "white";
-    // canvasContext.fillText("You Win!", 150, 200);
-    //new Audio("../sounds/gameWin.wav").play(); //play sound when win
+    // scoreDisplay.textContent = `Score ${(score *10)}`;
     winScreen.style.display = 'flex';
 }
-
-//creating pause feature 
-// function pressedPause(){
-//     screenPause.style.display = 'flex';
-//     clearTimeout(timerId);
-//   }
-//   //unpause/resume feature 
-//   function pressedResume(){
-    
-//     screenPause.style.display = 'none';
-
-//   }
 
 let drawFoods = () => { //used for creating pellets
     for (let i = 0; i < map.length; i++) {
@@ -346,6 +323,7 @@ let createGhosts = () => {
 createNewPacman();
 createGhosts();
 gameLoop();
+
 
 window.addEventListener("keydown", (event) => {
     let k = event.keyCode;

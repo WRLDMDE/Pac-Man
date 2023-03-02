@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">   
     <title>PacMan</title>
     <link rel="icon" href="https://www.freeiconspng.com/thumbs/pacman-png/pacman-png-18.png" type="image/icon type">
 </head>
@@ -17,11 +18,14 @@
         <img id="animation" src="../animations.gif" width="140" height="20">
         <img id="ghosts" src="../ghost.png" >
     </div>
-
+    
     <div id = "gameOverScreen" style = "display: none;">
         <div id = "losingtitle">
             <h2> Game Over</h2>
-    
+            <div id = "scoredisplay"> 
+                <h3>Score</h3>
+            </div>
+            
         </div>
         <div id ="deadPacMan image">
             <img id = "gif" src = "https://i.gifer.com/origin/50/5016760dd9f147e7a445529ed8ff40de_w200.gif" alt = "death">
@@ -36,6 +40,9 @@
     <div id = "winScreen" style = "display: none;">
         <div id = "wintitle">
             <h2> You Win!</h2>
+            <div id = "scoredisplay"> 
+                <h4>Score 2140 </h3>
+            </div>
         </div>
         <div>
              <!-- <img id = "happyPacManimg" src = "https://media.tenor.com/4a-eNRgYpRwAAAAd/pacman-pacman-dance.gif" alt = "winninggif">  -->

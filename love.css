@@ -1,3 +1,9 @@
+*, *::after , *::before {
+    box-sizing: border-box;
+    /* font-family: "Lucida Console", "Courier New", monospace; */
+    font-family: 'Press Start 2P', cursive;
+}
+
 body{
     background-color: black;
     display: flex;
@@ -17,10 +23,12 @@ canvas{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     border: 30px double #ff0101;
-    font-size: 3em;
+    font-size: 2em;
     margin-top: 0;
-    margin-left: 31%;
-    margin-right: 30%;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
     flex-direction: column;
     position: absolute;
     color: white;
@@ -29,7 +37,7 @@ canvas{
     align-items: center;
     text-align: center; 
     top: 0;
-    bottom: 14.5%; 
+    bottom: 0; 
     left: 0;
     right: 0;
     /* background: rgba(255, 255, 255, 0.2);
@@ -68,10 +76,10 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     border: 30px double #99ff01;
-    font-size: 1.75em;
+    font-size: 2.5em;
     margin-top: 0;
-    margin-left: 31%;
-    margin-right: 30%;
+    margin-left: 0%;
+    margin-right: 0%;
     flex-direction: column;
     position: absolute;
     color: white;
@@ -80,14 +88,14 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
     align-items: center;
     text-align: center; 
     top: 0;
-    bottom: 14.5%; 
+    bottom: 0; 
     left: 0;
     right: 0;
 }
 
-#wintitle{
+/* #wintitle{
     font-size: 2em;
-}
+} */
 
 #happyPacManimg{
     max-height: 100%;
@@ -95,10 +103,10 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
  }
 
 button {
+    margin: 1%;
     padding: 5%;
     font-size: 40px;
     border-radius: 16px;
-
 }
 
 button:hover {
