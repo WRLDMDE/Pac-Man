@@ -4,9 +4,22 @@ canvas {
     background-repeat: no-repeat;
 }
 
+#rezing {
+    margin-top: 100px;
+    margin-left: -90px;
+    height: auto;
+    width: auto;
+    max-width: 1800px;
+    max-height: 1800px;
+}
+
 #container {
     position: relative;
     display: inline-block;
+    display: block;
+    margin-left: 33%;
+    margin-right: auto;
+    width: 50%;
 }
 
 /* Game name animation */
@@ -25,6 +38,9 @@ canvas {
     border-radius: 8px;
     box-shadow: 0 4px #999;
     font-family: 'Press Start 2P', cursive;
+    margin-left: -290px;
+    /* margin-top: 120px; */
+    ;
 }
 
 /* Styling for the Start button */
@@ -35,8 +51,9 @@ canvas {
     position: absolute;
     top: 280px;
     left: 43.5%;
-    font-size: 13px;
+    font-size: 25px;
     cursor: pointer;
+    margin-top: 50px;
     /* Mouse pointer on hover */
 
 }
@@ -49,27 +66,29 @@ canvas {
     position: absolute;
     top: 340px;
     left: 41.5%;
-    font-size: 13px;
+    font-size: 25px;
     cursor: pointer;
-    /* Mouse pointer on hover */
+    margin-top: 190px;
+    margin-left: -285px;
+    /* Mouse pointe on hover */
 
 }
 
 /* Darker background on mouse-over */
 #start-button:hover {
-    background-color: #fed037;
+    background-color: #eec64c;
 }
 
 /* Darker background on mouse-over */
 #play-now-button:hover {
-    background-color: #fed037;
+    background-color: #eec64c;
 }
 
 
 #myVideo {
     position: fixed;
-    right: 0;
-    bottom: 0;
+    right: -95px;
+    bottom: -40px;
     min-width: 100%;
     min-height: 100%;
 }
@@ -99,3 +118,10 @@ canvas {
     background: #ddd;
     color: black;
 }
+
+/* .center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+} */

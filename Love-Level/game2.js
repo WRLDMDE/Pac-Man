@@ -12,6 +12,16 @@ let createRect = (x, y, width, height, color) => {
   canvasContext.fillRect(x, y, width, height);
 };
 
+let createRectR = (x, y, width, height, color) => {
+  var bgcolorlist=new Array( "#33FFBD","#C9FFA8", )
+ 
+  function changeColor() { // Define a function that changes the color of the rectangle
+  canvasContext.fillStyle = bgcolorlist[Math.floor(Math.random() * bgcolorlist.length)];
+  canvasContext.fillRect(x, y, width, height);
+  }
+    // Call the changeColor function every 5 seconds using setInterval
+   changeColor()
+};
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
@@ -234,13 +244,11 @@ let drawPower = () => { //Used for creating power pellets
           //9 within the tilemap is labeled as the open space
           if (map[i][j] == 9) {
               //renders a rectangle from the canvas 2D API
-              createRect(
+              createRectR(
                   j * oneBlockSize + oneBlockSize / 3,//x position
                   i * oneBlockSize + oneBlockSize / 3,//y position
                   oneBlockSize / 3,//width
                   oneBlockSize / 3,//height
-                  "#01FFF4"//color
-                   //"#NEON BLUE"
               );
           }
       }
