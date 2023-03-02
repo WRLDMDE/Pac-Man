@@ -3,19 +3,19 @@
 <head>
   <title>PacMan</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="/mainMenu/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">    
   <link rel="icon" href="https://www.freeiconspng.com/thumbs/pacman-png/pacman-png-18.png" type="image/icon type">
-
+  <script src="/mainMenu/index.js"></script>
 </head>
 <body>
     <video autoplay muted loop id="myVideo">
-        <source src="pacman-vaporwave.mp4" type="video/mp4">
+        <source src="/mainMenu/pacman-vaporwave.mp4" type="video/mp4">
       </video>
   <div id = 'container' class = "center">
-  <img src = "pac-man-logo (1).png" id = "rezing">
+  <img src = "/mainMenu/pac-man-logo (1).png" id = "rezing">
     <!-- Start button -->
     <button id="start-button" class="retro-button" onclick=" window.location.href= '../Base-Level/singlePlayer.html';">Arcade Pac-Man</button>
      
@@ -23,6 +23,6 @@
     <button id="play-now-button" class="retro-button" onclick=" window.location.href= '../Love-Level/multiPlayer.html';">Pac-Man in Love</button>
 </div>
 
-  <script src="../script/index.js"></script>
+
 </body>
 </html>
