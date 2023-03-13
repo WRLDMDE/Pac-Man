@@ -1,4 +1,4 @@
-# Pac-Man
+# Pac-Man++
 ## Team Name: WRLDMDE
 - Trevon (Project Manager)
 * Julian
