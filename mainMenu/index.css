@@ -13,6 +13,22 @@ canvas {
     max-height: 1800px;
 }
 
+#plus1 {
+    margin-top: 140px;
+    margin-left: 0px;
+    position: absolute;
+    height: auto;
+    max-width: 105px;
+}
+
+#plus2 {
+    margin-top: 140px;
+    margin-left: 120px;
+    position: absolute;
+    height: auto;
+    max-width: 105px;
+}
+
 #container {
     position: relative;
     display: inline-block;
