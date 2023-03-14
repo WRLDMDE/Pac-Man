@@ -3,9 +3,9 @@
 - Trevon Charles (Project Manager)
 * Julian Castro 
 + Daniel Nelson
-### User Story / Gameplay
+### Main Menu
 
-<img width="1728" alt="Screenshot 2023-03-13 at 5 11 37 PM" src="https://user-images.githubusercontent.com/114108168/225054657-1e1252c3-9536-4698-bff7-6f717354ee80.png">
+<img width="1728" alt="Main Menu" src="https://user-images.githubusercontent.com/114108168/225054657-1e1252c3-9536-4698-bff7-6f717354ee80.png">
 
 The player controls Pac-Man and must eat all dots inside of an enclosed maze, while avoiding all the ghosts in the maze. 
 
@@ -28,7 +28,8 @@ Pac Man must consume all dots for each level (evaluate score of all dots set it 
 - Pellets (dynamic)
 * Power pellets (dynamic)
 + Score display (dynamic)
-- Level display & difficulty(static)
+<img width="1728" alt="Vanilla Level" src="https://user-images.githubusercontent.com/114108168/225055108-bc79b4b9-c2fe-4e1c-b5dd-3696bafb9b28.png">
+
 ### Data:
 
 **What data will you need to track for each game component?
@@ -47,17 +48,15 @@ What data will you need to track for the entire game?**
 * Pellets widths and heights
 + Power pellets widths and height
 - Score counter display 
+<img width="1728" alt="Win Screen" src="https://user-images.githubusercontent.com/114108168/225055526-2c4a096e-9569-4e99-b45a-f27b7e0cd0bb.png">
 
 ### Events / Logic:
-
-**What events will occur in this game? (timer events, keyboard events, clicking events?)
-How do those events affect the data of the program?**
 
 **Keyboard events:**
 Control pacman's direction
 
 **On each frame:**
-
+<img width="1728" alt="Lose Screen" src="https://user-images.githubusercontent.com/114108168/225055831-70ee1e83-371d-4e6c-a98e-8aaa462eaa32.png">
 - Move pacman
 * Move ghosts
 + If Pac-man is caught by a ghost, he loses a life (decrement lives)
@@ -78,8 +77,7 @@ Control pacman's direction
 * 2 levels, Vanilla & Mutiplayer Level
 + A Pac Man power up turns the game into a game of snake as well
 - Portals
+<img width="1728" alt="Love Level" src="https://user-images.githubusercontent.com/114108168/225055956-f7584dd7-88c6-4005-9eb4-77d7886feb11.png">
 
 ### Elements:
 - Negative power up, reverses control 
-* (Optional) External libraries
-
