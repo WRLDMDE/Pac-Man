@@ -1,10 +1,11 @@
-# Pac-Man
+# Pac-Man++
 ## Team Name: WRLDMDE
-- Trevon (Project Manager)
-* Julian
-+ Daniel
+- Trevon Charles (Project Manager)
+* Julian Castro 
++ Daniel Nelson
 ### User Story / Gameplay
-**Describe the gameplay:**
+![My Image](/home/treyjaded/Development/unit-5/Pac-Man/sounds/readMePhotos/Screenshot 2023-03-13 at 2.26.56 PM.png)
+
 The player controls Pac-Man and must eat all dots inside of an enclosed maze, while avoiding all the ghosts in the maze. 
 
 All ghosts are contained in one area, with Pac Man starting at a random location on the maze.
@@ -73,41 +74,11 @@ Control pacman's direction
 * Customized sprites (requirements for dimensions) 
 + Power ups(more health, attacking ghosts)
 - Selector for themes(changing colors)
-- 3 levels, easy, medium, hard (adding an extra ghost) 
-- Using an API that uses facial recognition to swap users face sprite 
-- Camera access, with a facial recognition API that turns face pictures into your sprites. Ghost sprites, eyes move side to side. Pacman mouth opens on animation
-- Uses a mouse to control the direction of Pac Man?
-- A Pac Man power up turns the game into a game of snake as well
+* 2 levels, Vanilla & Mutiplayer Level
++ A Pac Man power up turns the game into a game of snake as well
 - Portals
 
 ### Elements:
 - Negative power up, reverses control 
 * (Optional) External libraries
 
-**JS library Used:**
-Potentially Kaboom
-
-onCollide()method and destroy()method along with defining area() on a sprite seems to efficiently solve the problem with collisions.
-solid() creates 
-add()- helps add components such as sprites to the game, along with other methods such as area() that'll define the area of a given sprite(useful for collisions), pos(), that defines a starting position of the sprite and allows movement
-onKeyDown() - controls the movement of a sprite given 
-camPos()- keeps the camera on player position if play position is passed as an argument to the method
-
-
-### MVP:
-Render a maze
-Render Pacman
-Move pacman within the maze such that pacman can't go through walls
-
-Part 2:
-Render pellets
-Pacman can eat pellets
-Score display
-
-Part 3:
-Render ghosts
-Move ghosts with AI
-Ghost collisions
-
-Part 4:
-Bonus stuff
