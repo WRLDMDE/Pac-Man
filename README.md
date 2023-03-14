@@ -5,7 +5,7 @@
 + Daniel Nelson
 ### User Story / Gameplay
 
-![alt text](unit-5/Pac-Man/sounds/readMePhotos/Screenshot 2023-03-13 at 2.26.56 PM.png)
+<img width="1728" alt="Screenshot 2023-03-13 at 5 11 37 PM" src="https://user-images.githubusercontent.com/114108168/225054657-1e1252c3-9536-4698-bff7-6f717354ee80.png">
 
 The player controls Pac-Man and must eat all dots inside of an enclosed maze, while avoiding all the ghosts in the maze. 
 
