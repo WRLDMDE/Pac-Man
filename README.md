@@ -4,7 +4,7 @@
 * Julian Castro 
 + Daniel Nelson
 ### User Story / Gameplay
-![My Image](/home/treyjaded/Development/unit-5/Pac-Man/sounds/readMePhotos/Screenshot 2023-03-13 at 2.26.56 PM.png)
+![alt text](unit-5/Pac-Man/sounds/readMePhotos/Screenshot 2023-03-13 at 2.26.56 PM.png)
 
 The player controls Pac-Man and must eat all dots inside of an enclosed maze, while avoiding all the ghosts in the maze. 
 
@@ -13,7 +13,7 @@ All ghosts are contained in one area, with Pac Man starting at a random location
 Dots are scattered all over traversable maze and the Score display starts at 0.
 
 Power ups(power pellets) are located at 4 corners on the map
-![alt text](http://url/to/img.png)
+
 **Does the game have an end? If so, what are the conditions for when it ends?**
 
 Pac Man must consume all dots for each level (evaluate score of all dots set it equal to such) 
