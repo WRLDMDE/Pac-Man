@@ -13,7 +13,7 @@ All ghosts are contained in one area, with Pac Man starting at a random location
 Dots are scattered all over traversable maze and the Score display starts at 0.
 
 Power ups(power pellets) are located at 4 corners on the map
-
+![alt text](http://url/to/img.png)
 **Does the game have an end? If so, what are the conditions for when it ends?**
 
 Pac Man must consume all dots for each level (evaluate score of all dots set it equal to such) 
