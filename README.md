@@ -8,16 +8,9 @@
 <img width="1728" alt="Main Menu" src="https://user-images.githubusercontent.com/114108168/225054657-1e1252c3-9536-4698-bff7-6f717354ee80.png">
 
 The player controls Pac-Man and must eat all dots inside of an enclosed maze, while avoiding all the ghosts in the maze. 
-
 All ghosts are contained in one area, with Pac Man starting at a random location on the maze.
-
 Dots are scattered all over traversable maze and the Score display starts at 0.
-
-Power ups(power pellets) are located at 4 corners on the map
-
-**Does the game have an end? If so, what are the conditions for when it ends?**
-
-Pac Man must consume all dots for each level (evaluate score of all dots set it equal to such) 
+Power ups(power pellets) are located at 4 corners on the map. Pac Man must consume all dots for each level (evaluate score of all dots set it equal to such) 
 
 ### Visual Game Components:
 **What are the visual game components? Which are static and which are animated?**
@@ -32,11 +25,11 @@ Pac Man must consume all dots for each level (evaluate score of all dots set it 
 ### Vanilla Level:
 <img width="1728" alt="Vanilla Level" src="https://user-images.githubusercontent.com/114108168/225055108-bc79b4b9-c2fe-4e1c-b5dd-3696bafb9b28.png">
 
+### Love Level:
+<img width="1728" alt="Love Level" src="https://user-images.githubusercontent.com/114108168/225055956-f7584dd7-88c6-4005-9eb4-77d7886feb11.png">
+
+
 ### Data:
-
-**What data will you need to track for each game component?
-What data will you need to track for the entire game?**
-
 - Level Layout (2D array)
 * Pac man location (row, column)
 + Pac Man width, height
@@ -53,12 +46,13 @@ What data will you need to track for the entire game?**
 ### Win Screen:
 <img width="1728" alt="Win Screen" src="https://user-images.githubusercontent.com/114108168/225055526-2c4a096e-9569-4e99-b45a-f27b7e0cd0bb.png">
 
-### Love Level:
+### Lose Screen:
 <img width="1728" alt="Lose Screen" src="https://user-images.githubusercontent.com/114108168/225055831-70ee1e83-371d-4e6c-a98e-8aaa462eaa32.png">
-**Keyboard events:**
-Control pacman's direction
+
 
 **On each frame:**
+**Keyboard events:**
+Control pacman's direction
 - Move pacman
 * Move ghosts
 + If Pac-man is caught by a ghost, he loses a life (decrement lives)
@@ -79,7 +73,5 @@ Control pacman's direction
 * 2 levels, Vanilla & Mutiplayer Level
 + A Pac Man power up turns the game into a game of snake as well
 - Portals
-<img width="1728" alt="Love Level" src="https://user-images.githubusercontent.com/114108168/225055956-f7584dd7-88c6-4005-9eb4-77d7886feb11.png">
+- 
 
-### Elements:
-- Negative power up, reverses control 
