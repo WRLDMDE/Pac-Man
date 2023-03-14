@@ -73,5 +73,4 @@ Control pacman's direction
 * 2 levels, Vanilla & Mutiplayer Level
 + A Pac Man power up turns the game into a game of snake as well
 - Portals
-- 
 
