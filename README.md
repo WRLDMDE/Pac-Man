@@ -4,6 +4,7 @@
 * Julian Castro 
 + Daniel Nelson
 ### User Story / Gameplay
+
 ![alt text](unit-5/Pac-Man/sounds/readMePhotos/Screenshot 2023-03-13 at 2.26.56 PM.png)
 
 The player controls Pac-Man and must eat all dots inside of an enclosed maze, while avoiding all the ghosts in the maze. 
