@@ -28,6 +28,8 @@ Pac Man must consume all dots for each level (evaluate score of all dots set it 
 - Pellets (dynamic)
 * Power pellets (dynamic)
 + Score display (dynamic)
+
+### Vanilla Level:
 <img width="1728" alt="Vanilla Level" src="https://user-images.githubusercontent.com/114108168/225055108-bc79b4b9-c2fe-4e1c-b5dd-3696bafb9b28.png">
 
 ### Data:
@@ -48,15 +50,15 @@ What data will you need to track for the entire game?**
 * Pellets widths and heights
 + Power pellets widths and height
 - Score counter display 
+### Win Screen:
 <img width="1728" alt="Win Screen" src="https://user-images.githubusercontent.com/114108168/225055526-2c4a096e-9569-4e99-b45a-f27b7e0cd0bb.png">
 
-### Events / Logic:
-
+### Love Level:
+<img width="1728" alt="Lose Screen" src="https://user-images.githubusercontent.com/114108168/225055831-70ee1e83-371d-4e6c-a98e-8aaa462eaa32.png">
 **Keyboard events:**
 Control pacman's direction
 
 **On each frame:**
-<img width="1728" alt="Lose Screen" src="https://user-images.githubusercontent.com/114108168/225055831-70ee1e83-371d-4e6c-a98e-8aaa462eaa32.png">
 - Move pacman
 * Move ghosts
 + If Pac-man is caught by a ghost, he loses a life (decrement lives)
